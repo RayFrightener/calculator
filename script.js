@@ -14,9 +14,7 @@ function div(a,b){
     return a/b;
 }
 
-let num1;
-let operator;
-let num2;
+
 
 
 function operate(operator,num1,num2){
@@ -35,24 +33,50 @@ function operate(operator,num1,num2){
 
 }
 
+let num1;
+let operator;
+let num2; 
 
-let displayElement = getElementByID("display");
+let displayElement = getElementById("display");
 const operatorButtons = document.querySelectorAll(".operator-button");
 const numberButtons = document.querySelectorAll(".number-button");
 const clearButton = document.querySelector(".clear-button");
-const equalButton = document.querySelector(".equal-buttn");
+const equalButton = document.querySelector(".equal-button");
+
+let currentNumber = "";
 
 numberButtons.forEach(button =>{
     button.addEventListener("click", () => {
-        const number1 = button.textContent;
-        displayElement.textContent = number1; 
+        currentNumber += button.textContent;
+        displayElement.textContent = currentNumber; 
         
-    })
-})
+    });
+});
 
 operatorButtons.forEach(button => {
     button.addEventListener("click", () => {
-        const operator = button.dataset.operator;
-
+        if(currentNumber !== ""){
+            num1 = parseFloat(currentNumber);
+            operator = button.dataset.operator;
+            currentNumber = "";  
+        }
     })
+});
+
+clearButton.addEventListener("click", () => {
+    currentNumber = "";
+    num1 = undefined;
+    operator = undefined;
+    num2 = undefined;
+    displayElement.textContent = "0"
+});
+
+equalButton.addEventListener("click", () =>{
+    if (currentNumber !== ""){
+        num2 = parseFloat(currentNumber);
+        const result = operate(operator,num1,num2);
+        displayElement.textContent = result;
+        currentNumber = result.toString();
+    }
 })
+
