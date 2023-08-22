@@ -34,3 +34,25 @@ function operate(operator,num1,num2){
     }
 
 }
+
+
+let displayElement = getElementByID("display");
+const operatorButtons = document.querySelectorAll(".operator-button");
+const numberButtons = document.querySelectorAll(".number-button");
+const clearButton = document.querySelector(".clear-button");
+const equalButton = document.querySelector(".equal-buttn");
+
+numberButtons.forEach(button =>{
+    button.addEventListener("click", () => {
+        const number1 = button.textContent;
+        displayElement.textContent = number1; 
+        
+    })
+})
+
+operatorButtons.forEach(button => {
+    button.addEventListener("click", () => {
+        const operator = button.dataset.operator;
+
+    })
+})
