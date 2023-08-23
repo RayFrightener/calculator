@@ -9,7 +9,7 @@ function prod(a,b){
 }
 function div(a,b){
     if (b === 0){
-        throw new Error("Cannot divide by zero");
+        throw new Error("Nice Try!");
     }
     return a/b;
 }
@@ -37,7 +37,7 @@ let num1;
 let operator;
 let num2; 
 
-let displayElement = getElementById("display");
+let displayElement = document.getElementById("display");
 const operatorButtons = document.querySelectorAll(".operator-button");
 const numberButtons = document.querySelectorAll(".number-button");
 const clearButton = document.querySelector(".clear-button");
@@ -71,12 +71,18 @@ clearButton.addEventListener("click", () => {
     displayElement.textContent = "0"
 });
 
-equalButton.addEventListener("click", () =>{
+
+
+equalButton.addEventListener("click", () => {
     if (currentNumber !== ""){
         num2 = parseFloat(currentNumber);
-        const result = operate(operator,num1,num2);
-        displayElement.textContent = result;
-        currentNumber = result.toString();
+        try {
+            const result = operate(operator, num1, num2);
+            displayElement.textContent = restult;
+            currentNumber = result.toString();
+        } catch (error){
+            displayElement.textContent = error.message;
+            currentNumber ="";
+        }
     }
 })
-
