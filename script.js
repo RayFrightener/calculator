@@ -56,7 +56,21 @@ numberButtons.forEach(button =>{
 operatorButtons.forEach(button => {
     button.addEventListener("click", () => {
         if(currentNumber !== ""){
+          if (num1 == undefined){
             num1 = parseFloat(currentNumber);
+          } else {
+            const num2 = parseFloat(currentNumber);
+            try {
+              const result = operate(operator, num1, num2);
+              displayElement.textContent = result;
+              num1 = result;
+            } catch (error){
+              displayElement.textContent = error.message;
+              currentNumber = "";
+              return
+            }
+          }
+          
             operator = button.dataset.operator;
             currentNumber = "";  
         }
@@ -74,12 +88,13 @@ clearButton.addEventListener("click", () => {
 
 
 equalButton.addEventListener("click", () => {
-    if (currentNumber !== ""){
-        num2 = parseFloat(currentNumber);
+    if (currentNumber !== "" && num1 !== undefined){
+        const num2 = parseFloat(currentNumber);
         try {
             const result = operate(operator, num1, num2);
-            displayElement.textContent = restult;
-            currentNumber = result.toString();
+            displayElement.textContent = result;
+            num1 = result;
+            currentNumber = "";
         } catch (error){
             displayElement.textContent = error.message;
             currentNumber ="";
