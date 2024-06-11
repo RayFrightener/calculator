@@ -28,3 +28,7 @@ button {
 #boundary {
     margin-top: 20px; /* Adds some space above the boundary */
 }
+
+#display {
+    font-size: 2em; /* Makes the text 2 times bigger than the normal text */
+}

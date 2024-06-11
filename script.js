@@ -19,7 +19,7 @@ function div(a,b){
 
 function operate(operator,num1,num2){
     switch(operator){
-        case "+":
+        case "+":``
             return add(num1,num2);
         case "-":
             return sub(num1,num2);
@@ -37,6 +37,7 @@ let num1;
 let operator;
 let num2; 
 
+
 let displayElement = document.getElementById("display");
 const operatorButtons = document.querySelectorAll(".operator-button");
 const numberButtons = document.querySelectorAll(".number-button");
@@ -44,47 +45,48 @@ const clearButton = document.querySelector(".clear-button");
 const equalButton = document.querySelector(".equal-button");
 
 let currentNumber = "";
+let expression = "";
 
 numberButtons.forEach(button =>{
     button.addEventListener("click", () => {
         currentNumber += button.textContent;
-        displayElement.textContent = currentNumber; 
+        expression += button.textContent;
+        displayElement.textContent = expression; 
         
     });
 });
 
 operatorButtons.forEach(button => {
     button.addEventListener("click", () => {
-        if(currentNumber !== ""){
-          if (num1 == undefined){
-            num1 = parseFloat(currentNumber);
-          } else {
-            const num2 = parseFloat(currentNumber);
-            try {
-              const result = operate(operator, num1, num2);
-              displayElement.textContent = result;
-              num1 = result;
-            } catch (error){
-              displayElement.textContent = error.message;
-              currentNumber = "";
-              return
+        if (currentNumber !== "") {
+            if (num1 == undefined) {
+                num1 = parseFloat(currentNumber);
+                currentNumber = "";
+            } else {
+                const num2 = parseFloat(currentNumber);
+                try {
+                    const result = operate(operator, num1, num2);
+                    num1 = result;
+                    currentNumber = "";
+                } catch (error) {
+                    displayElement.textContent = error.message;
+                    currentNumber = "";
+                    return;
+                }
             }
-          }
-          
-            operator = button.dataset.operator;
-            currentNumber = "";  
+            operator = button.textContent === "×" || button.textContent === "x" ? "*" : button.textContent;
+            expression += " " + operator + " ";
+            displayElement.textContent = expression;
         }
-    })
+    });
 });
 
 clearButton.addEventListener("click", () => {
-    currentNumber = "";
     num1 = undefined;
-    operator = undefined;
-    num2 = undefined;
-    displayElement.textContent = "0"
+    currentNumber = "";
+    expression = "";
+    displayElement.textContent = "0";
 });
-
 
 
 equalButton.addEventListener("click", () => {
@@ -93,11 +95,13 @@ equalButton.addEventListener("click", () => {
         try {
             const result = operate(operator, num1, num2);
             displayElement.textContent = result;
-            num1 = result;
+            num1 = undefined;
             currentNumber = "";
+            expression = "";
         } catch (error){
             displayElement.textContent = error.message;
-            currentNumber ="";
+            currentNumber = "";
+            return;
         }
     }
 })
