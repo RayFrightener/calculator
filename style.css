@@ -27,8 +27,16 @@ button {
 }
 #boundary {
     margin-top: 20px; /* Adds some space above the boundary */
-}
+    margin-bottom: 20px; 
+    }
 
 #display {
     font-size: 2em; /* Makes the text 2 times bigger than the normal text */
 }
+    .custom-style {
+        font-family: Arial;
+        color: #9ddd99;
+        position: absolute;
+        bottom: 0;
+        text-align: center;
+    }
