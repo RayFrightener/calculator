@@ -59,10 +59,7 @@ numberButtons.forEach(button =>{
 operatorButtons.forEach(button => {
     button.addEventListener("click", () => {
         if (currentNumber !== "") {
-            if (num1 == undefined) {
-                num1 = parseFloat(currentNumber);
-                currentNumber = "";
-            } else {
+            if (num1 !== undefined && operator !== undefined) {
                 const num2 = parseFloat(currentNumber);
                 try {
                     const result = operate(operator, num1, num2);
@@ -70,9 +67,11 @@ operatorButtons.forEach(button => {
                     currentNumber = "";
                 } catch (error) {
                     displayElement.textContent = error.message;
-                    currentNumber = "";
                     return;
                 }
+            } else {
+                num1 = parseFloat(currentNumber);
+                currentNumber = "";
             }
             operator = button.textContent === "×" || button.textContent === "x" ? "*" : button.textContent;
             expression += " " + operator + " ";
@@ -89,19 +88,21 @@ clearButton.addEventListener("click", () => {
 });
 
 
+
 equalButton.addEventListener("click", () => {
-    if (currentNumber !== "" && num1 !== undefined){
+    if (currentNumber !== "" && operator !== undefined) {
         const num2 = parseFloat(currentNumber);
         try {
             const result = operate(operator, num1, num2);
-            displayElement.textContent = result;
-            num1 = undefined;
-            currentNumber = "";
-            expression = "";
-        } catch (error){
+            num1 = result;
+            currentNumber = result.toString();
+            operator = undefined;
+            expression = result.toString();
+            displayElement.textContent = expression;
+        } catch (error) {
             displayElement.textContent = error.message;
             currentNumber = "";
             return;
         }
     }
-})
+});
