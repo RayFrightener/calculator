@@ -4,31 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
-
 </head>
 <body>
-    <div id="calculator">
-    <div id="display">0</div>
-    <div id="boundary">
-        <button class="number-button">7</button>
-        <button class="number-button">8</button>
-        <button class="number-button">9</button>
-        <button class="operator-button" data-operator="/">/</button><br>
-        <button class="number-button">4</button>
-        <button class="number-button">5</button>
-        <button class="number-button">6</button>
-        <button class="operator-button" data-operator="*">x</button><br>
-        <button class="number-button">1</button>
-        <button class="number-button">2</button>
-        <button class="number-button">3</button>
-        <button class="operator-button" data-operator="-">-</button><br>
-        <button class="number-button">0</button>
-        <button class="clear-button">Clear</button>
-        <button class="equal-button">=</button>
-        <button class="operator-button" data-operator="+">+</button><br>
-    </div>
-</div>
+    <div class="container">
+        <div id="display" class="jumbotron text-right">0</div>
+        <div id="buttons" class="d-flex flex-wrap justify-content-center">
+            <div class="btn-group btn-group-lg w-100">
+                <button class="btn btn-secondary number-button">7</button>
+                <button class="btn btn-secondary number-button">8</button>
+                <button class="btn btn-secondary number-button">9</button>
+                <button class="btn btn-secondary operator-button" data-operator="/">/</button>
+            </div>
+            <div class="btn-group btn-group-lg w-100">
+                <button class="btn btn-secondary number-button">4</button>
+                <button class="btn btn-secondary number-button">5</button>
+                <button class="btn btn-secondary number-button">6</button>
+                <button class="btn btn-secondary operator-button" data-operator="*">*</button>
+            </div>
+            <div class="btn-group btn-group-lg w-100">
+                <button class="btn btn-secondary number-button">1</button>
+                <button class="btn btn-secondary number-button">2</button>
+                <button class="btn btn-secondary number-button">3</button>
+                <button class="btn btn-secondary operator-button" data-operator="-">-</button>
+            </div>
+            <div class="btn-group btn-group-lg w-100">
+                <button class="btn btn-secondary number-button">0</button>
+                <button class="btn btn-secondary clear-button">clear</button>
+                <button class="btn btn-secondary equal-button">=</button>
+                <button class="btn btn-secondary operator-button" data-operator="+">-</button>
+            </div>
+
 <div><h3 class ="custom-style" > programmed by Pranshu :)</h3></div>
     <script src="script.js"></script>
 </body>

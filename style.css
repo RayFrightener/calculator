@@ -40,3 +40,22 @@ button {
         bottom: 0;
         text-align: center;
     }
+
+    .container {
+        max-width: 400px; /* Adjust as needed */
+    }
+    
+    #display {
+        font-size: 2rem; /* Adjust as needed */
+        height: 100px; /* Adjust as needed */
+    }
+    
+    #buttons {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .btn-group {
+        margin: 5px;
+    }
