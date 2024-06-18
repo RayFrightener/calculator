@@ -1,8 +1,3 @@
-#calculator {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
 body {
     display:flex;
     justify-content: center;
@@ -12,50 +7,35 @@ body {
     background: #f3f3f3;
 }
 
-button {
-    background-color: #4CAF50;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;    
-    cursor: pointer;
-
-}
-#boundary {
-    margin-top: 20px; /* Adds some space above the boundary */
-    margin-bottom: 20px; 
-    }
-
 #display {
     font-size: 2em; /* Makes the text 2 times bigger than the normal text */
 }
-    .custom-style {
+.custom-style {
         font-family: Arial;
-        color: #9ddd99;
+        color: #6c757d;
         position: absolute;
         bottom: 0;
         text-align: center;
     }
 
-    .container {
+.container {
         max-width: 400px; /* Adjust as needed */
     }
     
-    #display {
+#display {
         font-size: 2rem; /* Adjust as needed */
         height: 100px; /* Adjust as needed */
     }
     
-    #buttons {
+#buttons {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
     }
-    
-    .btn-group {
+    .btn-secondary {
+        border: 1px solid black; /* Adjust color as needed */
+    }
+.btn-group {
         margin: 5px;
     }
+
